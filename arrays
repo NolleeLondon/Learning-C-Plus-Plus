@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+int main() {
+    float month[6];
+    float sumArr;
+    float result;
+
+    for(int i = 0; i < 6; i++){
+        cout << "Enter amount for month " << i << ":";
+        float monthAmount;
+        cin >> monthAmount;
+        month[i] = monthAmount;
+        float sumArr = month[i];
+        result += sumArr;
+    }
+
+    float avg = (result / 6);
+    float inTwoYears = avg * 24;
+
+    cout << "Total: " << result << endl;
+    cout << "Average: " << avg << endl;
+    cout << "In two years: " << inTwoYears << endl;
+};
