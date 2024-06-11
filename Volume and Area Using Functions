@@ -1,0 +1,31 @@
+// Creator: Nollee London
+// My first program learning how to use functions in C++
+// Purpose: Finding the volume and the area
+#include <iostream>
+#include <string>
+using namespace std;
+double areaSquare(double length);
+double cube(double length);
+
+
+int main() {
+//area
+    double userChoice;
+    cout << "enter the length of the side of your square to find the area here: ";
+    cin >> userChoice;
+    double totalArea = areaSquare(userChoice);
+    cout << totalArea << endl;
+//volume    
+    cout << "enter the length of the side of your cube to find the volume: ";
+    double userChoice2;
+    cin >> userChoice2;
+    double volume = cube(userChoice2);
+    cout << volume << endl;
+
+}
+double areaSquare(double length) {
+    return length * length;
+}
+double cube(double length) {
+    return length * length * length;
+}
