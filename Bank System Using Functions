@@ -1,0 +1,66 @@
+Creator: Nollee London
+Purpose: Bank system using functions
+
+#include <iostream>
+using namespace std;
+
+void showmenu();
+
+double checkBalance(double total);
+double withdrawMoney(double total, double withdraw);
+double depositMoney(double total, double deposit);
+int main() {
+
+	int userChoice;
+	double deposit;
+	double result1;
+	double withdraw;
+	double result2;
+
+	showmenu();
+
+	double total = 100.0;
+	cin >> userChoice;
+
+	switch(userChoice) {
+	case 1:
+		cout << "Balance is: ";
+		cout << checkBalance(total);
+		break;
+	case 2:
+		cout << "How much would you like to deposit?: ";
+		cin >> deposit;
+		result1 = depositMoney(total, deposit);
+		cout << result1 << endl;
+		break;
+	
+	case 3: 
+		cout << "How much would you like to withdraw?: ";
+		cin >> withdraw;
+		result2 = withdrawMoney(total, withdraw);
+		cout << result2 << endl;
+		break;
+	default:
+		cout << "Enter a valid choice (1-3)";
+	}
+	return 0;
+}
+
+void showmenu() {
+	cout << "Hi welcome to your account! Choose from the options below." << endl;
+	cout << "1. Check Balance" << endl;
+	cout << "2. Deposit" << endl;
+	cout << "3. Withdraw" << endl;
+}
+double checkBalance(double total) {
+	return total;
+}
+double depositMoney(double total, double deposit) {
+	double newTotal =  total + deposit;
+	return newTotal;
+}
+
+double withdrawMoney(double total,double withdraw) {
+	double newTotal = total - withdraw;
+	return newTotal;
+}
