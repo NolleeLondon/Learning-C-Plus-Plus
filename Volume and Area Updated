@@ -1,0 +1,51 @@
+// Creator: Nollee London
+// Purpose: Allows user to find area and volume with different length, widths, and heights
+#include <iostream>
+#include <string>
+using namespace std;
+
+// use length with and height
+double findingArea(double length, double width);
+int findingVolume(int length, int width, int height);
+
+int main() {
+    int choice;
+    double userLength;
+    double userHeight;
+    double userWidth;
+   cout << "Hi welcome! Please enter the following information below to find the volume of your figure." << endl;
+   cout << "Would you like to find the area or volume?" << endl << "Enter 1 if you wish to find the area, Enter 2 if you wish to find the volume: ";
+   cin >> choice;
+   
+   if(choice == 1){ // area
+       cout << "Please enter the following below" << endl;
+       cout << "Length: ";
+       cin >> userLength;
+       cout << "Height: ";
+       cin >> userHeight;
+       double result1 = findingArea(userLength, userHeight);
+       cout << result1 << endl;
+   }else if(choice == 2){ 
+       //volume
+       cout << "Please enter the following below" << endl;
+       cout << "Length: ";
+       cin >> userLength;
+       cout << "Width: ";
+       cin >> userWidth;
+       cout<< "Height: ";
+       cin >> userHeight;
+       int result2 = findingVolume(userLength, userWidth, userHeight);
+       cout << result2 << endl;
+   }else {
+       cout << "Please enter a valid choice.";
+   }
+    
+}
+
+double findingArea(double length, double width) {
+    return length * width;
+}
+int findingVolume(int length, int width, int height) {
+    int volume = length * width * height;
+    return volume;
+}
