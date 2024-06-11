@@ -1,0 +1,67 @@
+Creator: Nollee London
+Purpose: personal bank system
+
+#include <iostream>
+using namespace std;
+
+void showMenu() {
+	cout << "Hi welcome to your personal banking system! please choose from the following options below." << endl;
+	cout << "1. check balance" << endl;
+	cout << "2. deposit" << endl;
+	cout << "3. withdraw" << endl;
+}
+int main() {
+	int choice;
+	double currentBalance;
+	currentBalance = 0;
+	double newBalance1, newBalance2;
+	double deposit, withdraw;
+	bool playagain = true;
+	char choicetoplay;
+
+	while (playagain) {
+		showMenu();
+		cout << "Choice: ";
+		cin >> choice;
+		switch (choice) {
+		case 1:
+			cout << "you chose to check your current balance." << endl;
+			cout << "your current balance is: ";
+			cout << currentBalance;
+			break;
+		case 2:
+			cout << "you chose to deposit money." << endl;
+			cout << "please enter the amount of money you would like to deposit: ";
+			cin >> deposit;
+			newBalance1 = currentBalance + deposit;
+			cout << newBalance1;
+			break;
+		case 3:
+			cout << "you chose to withdraw money." << endl;
+			cout << "please enter the amount of money you would like to withdraw: ";
+			cin >> withdraw;
+			if (withdraw >= currentBalance) {
+				cout << "not enough money.";
+			}
+			else {
+				newBalance2 = currentBalance - withdraw;
+				cout << newBalance2;
+			}
+			break;
+		default:
+			cout << "please enter a valid choice." << endl;
+		}
+		cout << endl;
+		cout << "Would you like to play again?(y/n): ";
+		cin >> choicetoplay;
+
+		if (choicetoplay == 'y' || choicetoplay == 'Y') {
+			continue;
+		}
+		else {
+			playagain = false;
+		}
+		
+	}
+	return 0;
+}
