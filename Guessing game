@@ -1,0 +1,57 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+int distanceToClosest(const int solutions[], int SIZE, int guess);
+
+int main() {
+	int distanceBefore = 1001;
+	int const SIZE = 5;
+	int solutions[SIZE] = { 50, 250, 450, 650, 850 };
+	int correctGuess = 87;
+	int distanceNow;
+	int guess;
+	bool guessing = true;
+
+	while (guessing) {
+		cout << "Hi, please try and guess one of my numbers between 1 and 1000!" << endl;
+		cout << "Enter guess here: ";
+		cin >> guess;
+
+		//checking if number is between 1 and 1000
+		if (guess < 1 || guess > 1000) {
+			cout << "Please enter a number that is between 1 and 1000.";
+		}
+
+		int distanceNow = distanceToClosest(solutions, SIZE, guess);
+
+		if (guess == correctGuess) {
+			cout << "Success!" << endl;
+			break;
+		}
+
+
+		if (distanceNow < distanceBefore) {
+			cout << "Getting warmer!" << endl;
+		}
+		else if (distanceNow > distanceBefore) {
+			cout << "Getting colder!" << endl;
+		}
+		else {
+			cout << "Im sorry thats incorrect!" << endl;
+		}
+		distanceBefore = distanceNow;
+
+	}
+}
+
+//function that was given
+int distanceToClosest(const int solutions[], int SIZE, int guess) {
+	int distanceBetween = abs(solutions[0] - guess);
+	for (int index = 1; index < SIZE; index++) {
+		int distanceNow = abs(solutions[index] - guess);
+		if (distanceNow < distanceBetween) {
+			distanceBetween = distanceNow;
+		}
+	}
+	return distanceBetween;
+}
