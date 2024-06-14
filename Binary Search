@@ -1,0 +1,32 @@
+#include <iostream>
+
+using namespace std;
+
+int binary_search(int a[], int e, int leftIndex, int rightIndex);
+
+int main() {
+	int unsorted[] = { 9, 5, 13, 3, 8, 7, 2, 12, 6, 10, 4, 11, 1 };
+
+	int sorted[] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
+
+	int index = binary_search(sorted,14, 0, 12);
+
+	cout << "index of 14: " << index << endl;
+
+	return 0;
+}
+int binary_search(int a[], int e, int leftIndex, int rightIndex){
+	int mid = leftIndex + (rightIndex - 1) / 2;
+	if (leftIndex > rightIndex) {
+		return -1;
+	}
+	if (a[mid] == e) {
+		return mid;
+	}
+	else if (a[mid] > e) {
+		return binary_search(a, e, leftIndex, mid - 1); // left hand side of array, look at the index one to the left of the mid
+	}
+	else {
+		return binary_search(a, e, mid + 1, rightIndex); // look at right hand side of array
+	}
+}
