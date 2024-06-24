@@ -1,0 +1,16 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main(){
+	string word1;
+	string phrase;
+	string word2 = " Dog";
+	cin >> word1; // user enters hot tamale but word1 only holds "hot"
+	phrase = word1 + word2; // this becomes "Hot Dog" (could use getline if you want to display hot tamale)
+
+	phrase += " on a bun";
+	for (int i = 0; i < 16; i++) {
+		cout << phrase[i]; //displays "Hot Dog on a bun
+	}
+}
