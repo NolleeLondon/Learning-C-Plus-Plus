@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+#include <cstdlib>
+#include <algorithm>
+
+
+struct foo {
+	int x, y;
+};
+int main()
+{
+	foo f{ 8,3 };
+	foo* p = &f;
+
+	cout << f.x << endl;  //prints 8
+
+	//. has precedence over *
+
+	cout << (*p).x << endl;  //prints 8
+	cout << p->x << endl;    //prints 8
+	cout << p->y << endl;    //equilvelant to (*p.x)
+}
