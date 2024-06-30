@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+#include <cstdlib>
+#include <algorithm>
+
+
+struct foo {
+	int x, y;
+};
+int main()
+{
+	//dynamically allocate foo structure
+	foo* p = nullptr;
+	p = new foo; //creates a new space in memory for foo
+
+	p->x = 88;
+	p->y = 3;
+
+	cout << p->x << " " << p->y << endl;
+
+	delete p;
+}
