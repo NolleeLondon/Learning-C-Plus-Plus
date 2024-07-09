@@ -1,0 +1,30 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+#include <list>
+using namespace std;
+
+class YoutubeChannel { 
+public: //allows you to represent a real life thing such as a youtube channel
+	string Name;
+	string OwnerName;
+	int SubCount;
+	list<string>PublishedVideoTitles;
+};
+
+int main(){
+
+	YoutubeChannel ytChannel;
+		ytChannel.Name = "nolleecodes";
+		ytChannel.OwnerName = "Nollee";
+		ytChannel.SubCount = 1800;
+		ytChannel.PublishedVideoTitles = { "learning c++", "C++ video 2", "c++ oop video 1" };
+
+		cout << "Name: " << ytChannel.Name << endl;
+		cout << "Owner Name: " << ytChannel.OwnerName << endl;
+		cout << "Sub count: " << ytChannel.SubCount << endl;
+		cout << "Videos: " << endl;
+		for (string VideoTitle : ytChannel.PublishedVideoTitles) {
+			cout << VideoTitle << endl;
+		}
+}
