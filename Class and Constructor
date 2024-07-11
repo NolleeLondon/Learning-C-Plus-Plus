@@ -1,0 +1,26 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+
+class Employee {
+    public:
+    string Name;
+    string Company;
+    int Age;
+    void introduceYourself(){
+        cout << "Hello my name is " << Name << endl;
+        cout << "The company i work for is " << Company << endl;
+        cout << "I am " << Age << " Years old" << endl;
+    }
+            //constructor
+    Employee(string name, string company, int age){
+        Name = name;
+        Company = company;
+        Age = age;
+    }
+};
+int main() {
+    Employee employee1 = Employee("Nollee", "Dierburgs", 32);
+    employee1.introduceYourself();
+    
+}
