@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+#include <limits>
+#include <ctime>
+#include <cstdlib>
+using namespace std;
+
+class User {
+public:
+	string FirstName;
+	string LastName;
+	int Age;
+	string Email;
+
+	//PARAMTER CONSTRUCTOR
+	User(string firstname, string lastname, int age) {
+		FirstName = firstname;
+		LastName = lastname;
+		Age = age;
+		Email = firstname+ "."+lastname+"@gmail.com";
+	}
+};
+
+void getUserInfo(User u) {
+	cout << u.FirstName << endl;
+	cout << u.LastName << endl;
+	cout << u.Age << endl;
+	cout << u.Email << endl;
+}
+int main(){
+
+	User user1("natalie", "freddy", 42);
+	User user2("luke", "smith", 61);
+
+	getUserInfo(user1);
+	getUserInfo(user2);
+
+
+}
