@@ -1,0 +1,43 @@
+#include <iostream>
+#include <string>
+#include <limits>
+#include <ctime>
+#include <cstdlib>
+using namespace std;
+
+class Student {
+public:
+	string Name;
+	int Age;
+	char Gender;
+	float ProgrammingGrade;
+	
+
+	Student(string name, int age, char gender, float programminggrade) {
+		Name = name;
+		Age = age;
+		Gender = gender;
+		ProgrammingGrade = programminggrade;
+	}
+
+
+};
+
+
+int main() {
+	
+	Student students[3] = {
+		{"Nollee", 20,'f', 9},
+		{"lukas",21,'m',10},
+		{"craig",52,'m',10}
+	};
+
+	for (int i = 0; i < 3; i++) {
+		cout << "Name: "<< students[i].Name << endl;
+		cout << "Age: " << students[i].Age << endl;
+		cout << "Gender: "<< students[i].Gender << endl;
+		cout << "Grade: " << students[i].ProgrammingGrade << endl;
+		cout << endl;
+	}
+
+}
