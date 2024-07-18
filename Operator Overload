@@ -1,0 +1,41 @@
+#include <string>
+#include<iostream>
+using namespace std;
+/*
+what is operator overloading?
+it is a specific case of polymorphism in which the operator is overloaded to provide special
+meaing to the user defined datatype
+general syntax: returnType operator symbol(arguments)
+*/
+
+class Point {
+private:
+	int x;
+	int y;
+public:
+	Point(int x = 0, int y = 0) {
+		this->x = x;
+		this->y = y;
+	}
+	Point operator + (const Point &rhs) {
+		Point p;
+		p.x = x + rhs.x; //adding x of p1 + x of p2 and storing it inside p object
+		p.y = y + rhs.y; //adding y of p1 + y of p2 and storing it inside p object
+		return p;
+	}
+	void print() {
+		cout << "x: " << x << " " << "y: " << y << endl;
+	}
+};
+
+int main(){
+	
+	Point p1(1, 2);
+	Point p2(3, 4);
+	Point p3 = p1 + p2;
+	//Point p3 = p1.operator:: +(p2); p2 is the parameter p1 is being called
+
+	p3.print();
+
+	return 0;
+}
