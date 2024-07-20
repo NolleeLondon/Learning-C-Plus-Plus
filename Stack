@@ -1,0 +1,41 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+
+/*
+push(data): inserts data onto the top of stack
+pop():deletes the last inserted element from the top stack
+top(): returns the last inserted element without removing it(top element)
+size(): returns the size or the number of elements in the stack
+empty(): returns TRUE if the stack is empty, else returns FALSE
+isFull(): returns TRUE if the stack is full, else returns FALSE
+-last in first out
+*/
+
+void printStackElements(stack<int> stack) {
+	while (!stack.empty()) {
+		cout << stack.top() << endl;
+		stack.pop();
+	}
+}
+
+int main() {
+	
+	stack<int>numbersStack;
+
+	numbersStack.push(1);
+	numbersStack.push(2);
+	numbersStack.push(3);
+	numbersStack.pop();  //removes 3 because of LIFO
+
+	printStackElements(numbersStack);
+
+	
+	if (numbersStack.empty())
+		cout << "Stack is empty!" << endl;
+	else
+		cout << "Stack is NOT empty!" << endl;
+
+	cout << "Stack size is " << numbersStack.size() << " element" <<  endl;
+
+}
