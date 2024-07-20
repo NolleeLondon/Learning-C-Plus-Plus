@@ -1,0 +1,69 @@
+#include <iostream>
+using namespace std;
+
+class Book {
+public:
+    string Title;
+    string Author;
+    float* Rates;
+    int RatesCounter;
+
+    // Constructor
+    Book(string title, string author) {
+        Title = title;
+        Author = author;
+        RatesCounter = 2;
+        Rates = new float[RatesCounter];
+        Rates[0] = 5;
+        Rates[1] = 4;
+    }
+
+    // Copy Constructor
+    Book(const Book& original) {
+        Title = original.Title;
+        Author = original.Author;
+        RatesCounter = original.RatesCounter;
+
+        // Allocate new memory for Rates array
+        Rates = new float[RatesCounter];
+        // Copy contents of original.Rates to Rates
+        for (int i = 0; i < RatesCounter; i++) {
+            Rates[i] = original.Rates[i];
+        }
+    }
+
+    // Destructor
+    ~Book() {
+        delete[] Rates;
+        Rates = nullptr;
+    }
+
+    // Function to print book details
+    void PrintBook() const {
+        cout << "Title: " << Title << endl;
+        cout << "Author: " << Author << endl;
+        cout << "Rates: ";
+        for (int i = 0; i < RatesCounter; i++) {
+            cout << Rates[i] << " ";
+        }
+        cout << endl << "Rates Counter: " << RatesCounter << endl;
+    }
+};
+
+int main() {
+    // Create books
+    Book book1("Millionaire Fastlane", "M.J. DeMarco");
+    Book book2("C++ Lambda Story", "Bartek F.");
+
+    // Create a copy of book1 using copy constructor
+    Book book3(book1);
+
+    // Print details of book1 and book3
+    book1.PrintBook();
+    cout << endl;
+    book3.PrintBook();
+
+    cin.ignore(); // To consume newline left in the input buffer
+
+    return 0;
+}
