@@ -1,0 +1,35 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+void writeToFile(ofstream&, string);
+bool openFile(ofstream&, string);
+
+int main() {
+
+	ofstream fout;
+
+	bool result = openFile(fout, "outputtxt");
+
+	if (result == true) {
+		writeToFile(fout, "hello world");
+	}
+	else {
+		cout << "file failed to open\n";
+	}
+}
+
+bool openFile(ofstream& fout, string filename) {
+	fout.open(filename);
+	if (fout, is_open()) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+void writeToFile(ofstream& fout, string str) {
+	fout << str;
+	fout.close();
+}
