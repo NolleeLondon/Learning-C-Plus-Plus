@@ -1,0 +1,20 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main() {
+
+	fstream myFile;
+	myFile.open("TextFile1.txt", ios::out ); //write to a file
+	if (myFile.is_open()) {
+		myFile << "Hello\n";
+		myFile << "This is second line\n";
+		myFile.close();
+	}
+	fstream myFile;
+	myFile.open("TextFile1.txt", ios::app); //append mode (add more to the file)
+	if (myFile.is_open()) {
+		myFile << "Hello2\n";
+		myFile.close();
+	}
+}
