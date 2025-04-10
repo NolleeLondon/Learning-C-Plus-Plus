@@ -1,0 +1,111 @@
+#include <iostream>
+#include <cctype>
+#include <string>
+using namespace std;
+
+
+//struct that was given in instructions
+struct Word {
+    string english;
+    string piglatin;
+};
+
+
+//functions that were given in instructions
+Word * splitSentence(const string words, int &size);
+void convertToPigLatin(Word wordArr[], int size);
+void displayPigLatin(const Word wordArr[], int size);
+
+
+//created this one
+bool checkForVowel(char letter);
+
+
+int main() {
+    int size;
+    string englishSentence;
+    cout<< "Please enter a string to convert to PigLatin: ";
+    getline(cin, englishSentence);
+
+
+    //split sentence into words
+    Word* words = splitSentence(englishSentence, size);
+    //convert each word to pig latin
+    convertToPigLatin(words, size);
+    //display pig latin sentence
+    displayPigLatin(words, size);
+
+
+    //cleaning up allocated memory as told
+    delete [] words;
+    words = nullptr;
+    return 0;
+}
+
+
+Word* splitSentence(const string words, int &size){
+    string wordsCopy = words;
+    int numWords = 0;
+   
+    //convert to lowercase and remove characters that are not alphabetical
+    for(int i = 0; i < wordsCopy.size(); ++i){
+        wordsCopy[i] = tolower(wordsCopy[i]);
+        if(!isalpha(wordsCopy[i])){
+            wordsCopy[i] = ' ';
+        }
+    }
+
+
+    //counting words
+    for(int i = 0; i < wordsCopy.size(); ++i){
+        if(isalpha(wordsCopy[i]) && (i == 0 || !isalpha(wordsCopy[i - 1]))){
+            ++numWords;
+        }
+    }
+
+
+    //allocate the array of Word structures to store the words
+    Word* temp = new Word[numWords];
+    int index = 0;
+
+
+    //storing words in the array
+    for(int i = 0; i < wordsCopy.size(); ++i){
+        if(isalpha(wordsCopy[i])){
+            int j = i;
+            while(isalpha(wordsCopy[j])){
+                ++j;
+            }
+            temp[index].english = wordsCopy.substr(i, j - i);
+            ++index;
+            i = j - 1;
+        }
+    }
+
+    size = numWords;
+    return temp;
+}
+
+
+void convertToPigLatin(Word wordArr[], int size){
+    for(int i = 0; i < size; ++i){
+        if(checkForVowel(wordArr[i].english[0])){
+            wordArr[i].piglatin = wordArr[i].english + "way";
+        }
+        else{
+            wordArr[i].piglatin = wordArr[i].english.substr(1) + wordArr[i].english[0] + "ay";
+        }
+    }
+}
+
+
+void displayPigLatin(const Word wordArr[], int size) {
+    for(int i = 0; i < size; ++i){
+        cout << wordArr[i].piglatin << " ";
+    }
+    cout << endl;
+}
+bool checkForVowel(char letter){
+    letter = tolower(letter); //make sure every letter is lowercase to check if its a vowel
+    return(letter == 'a' || letter == 'e' || letter == 'i' ||  letter == 'o' ||  letter == 'u');
+}
